@@ -1,77 +1,195 @@
 {
   "summary": {
-    "total_30_days": 847,
-    "critical": 12,
-    "warning": 156,
-    "info": 679,
-    "resolved": 823,
-    "pending": 24
+    "total_30_days": 15,
+    "critical": 2,
+    "warning": 8,
+    "info": 5,
+    "resolved": 13,
+    "pending": 2
   },
   "recent": [
     {
       "id": "err-001",
       "timestamp": "2026-02-01T09:45:23Z",
-      "level": "warning",
-      "project": "wowpay",
-      "message": "Payment gateway timeout - retry succeeded",
-      "code": "GATEWAY_TIMEOUT",
-      "status_code": 504,
+      "level": "critical",
+      "project": "mbme-gateway",
+      "message": "Database connection pool exhausted - auto-recovery initiated",
+      "code": "DB_POOL_EXHAUSTED",
+      "status_code": 503,
       "resolved": true,
-      "resolved_at": "2026-02-01T09:45:28Z"
+      "resolved_at": "2026-02-01T09:48:15Z"
     },
     {
       "id": "err-002",
       "timestamp": "2026-02-01T08:32:15Z",
-      "level": "info",
-      "project": "bigdate",
-      "message": "Rate limit threshold reached for user",
-      "code": "RATE_LIMIT_WARNING",
-      "status_code": 429,
+      "level": "warning",
+      "project": "wowpay",
+      "message": "Payment gateway timeout - retry succeeded on attempt 2",
+      "code": "GATEWAY_TIMEOUT",
+      "status_code": 504,
       "resolved": true,
-      "resolved_at": "2026-02-01T08:33:00Z"
+      "resolved_at": "2026-02-01T08:32:28Z"
     },
     {
       "id": "err-003",
       "timestamp": "2026-02-01T07:18:42Z",
-      "level": "critical",
-      "project": "mbme-gateway",
-      "message": "Database connection pool exhausted",
-      "code": "DB_POOL_EXHAUSTED",
-      "status_code": 503,
-      "resolved": true,
-      "resolved_at": "2026-02-01T07:22:15Z"
-    },
-    {
-      "id": "err-004",
-      "timestamp": "2026-01-31T23:55:18Z",
       "level": "warning",
       "project": "erp-framework",
-      "message": "OpenAI API rate limit exceeded",
+      "message": "OpenAI API rate limit exceeded - queued for retry",
       "code": "OPENAI_RATE_LIMIT",
       "status_code": 429,
       "resolved": true,
-      "resolved_at": "2026-01-31T23:56:30Z"
+      "resolved_at": "2026-02-01T07:19:30Z"
+    },
+    {
+      "id": "err-004",
+      "timestamp": "2026-02-01T06:55:18Z",
+      "level": "info",
+      "project": "bigdate",
+      "message": "Rate limit threshold reached for user session",
+      "code": "RATE_LIMIT_WARNING",
+      "status_code": 429,
+      "resolved": true,
+      "resolved_at": "2026-02-01T06:56:00Z"
     },
     {
       "id": "err-005",
-      "timestamp": "2026-01-31T22:10:33Z",
+      "timestamp": "2026-02-01T05:10:33Z",
       "level": "warning",
       "project": "wowpay",
-      "message": "Biller API response delayed > 5s",
+      "message": "Biller API response delayed > 5s - transaction completed",
       "code": "BILLER_SLOW_RESPONSE",
       "status_code": 200,
       "resolved": true,
-      "resolved_at": "2026-01-31T22:10:38Z"
+      "resolved_at": "2026-02-01T05:10:38Z"
+    },
+    {
+      "id": "err-006",
+      "timestamp": "2026-02-01T04:22:11Z",
+      "level": "critical",
+      "project": "wowpay",
+      "message": "Payment processing failed - insufficient funds response from gateway",
+      "code": "PAYMENT_FAILED",
+      "status_code": 402,
+      "resolved": false,
+      "resolved_at": null
+    },
+    {
+      "id": "err-007",
+      "timestamp": "2026-02-01T03:45:09Z",
+      "level": "warning",
+      "project": "mbme-gateway",
+      "message": "High memory usage detected on instance-2 (87%)",
+      "code": "HIGH_MEMORY_USAGE",
+      "status_code": 200,
+      "resolved": true,
+      "resolved_at": "2026-02-01T03:52:00Z"
+    },
+    {
+      "id": "err-008",
+      "timestamp": "2026-02-01T02:30:45Z",
+      "level": "info",
+      "project": "erp-framework",
+      "message": "Scheduled maintenance window started - non-critical services paused",
+      "code": "MAINTENANCE_MODE",
+      "status_code": 200,
+      "resolved": true,
+      "resolved_at": "2026-02-01T02:45:00Z"
+    },
+    {
+      "id": "err-009",
+      "timestamp": "2026-02-01T01:15:22Z",
+      "level": "warning",
+      "project": "bigdate",
+      "message": "CDN cache invalidation timeout - fallback to origin",
+      "code": "CDN_CACHE_TIMEOUT",
+      "status_code": 504,
+      "resolved": true,
+      "resolved_at": "2026-02-01T01:15:45Z"
+    },
+    {
+      "id": "err-010",
+      "timestamp": "2026-01-31T23:55:18Z",
+      "level": "info",
+      "project": "erp-framework",
+      "message": "User session expired - automatic logout triggered",
+      "code": "SESSION_EXPIRED",
+      "status_code": 401,
+      "resolved": true,
+      "resolved_at": "2026-01-31T23:55:20Z"
+    },
+    {
+      "id": "err-011",
+      "timestamp": "2026-01-31T22:40:33Z",
+      "level": "warning",
+      "project": "wowpay",
+      "message": "SMS OTP delivery delayed - carrier network congestion",
+      "code": "OTP_DELAY",
+      "status_code": 200,
+      "resolved": true,
+      "resolved_at": "2026-01-31T22:41:15Z"
+    },
+    {
+      "id": "err-012",
+      "timestamp": "2026-01-31T21:18:09Z",
+      "level": "warning",
+      "project": "mbme-gateway",
+      "message": "Webhook delivery failed - retrying in 30s",
+      "code": "WEBHOOK_FAILED",
+      "status_code": 502,
+      "resolved": true,
+      "resolved_at": "2026-01-31T21:18:45Z"
+    },
+    {
+      "id": "err-013",
+      "timestamp": "2026-01-31T20:05:44Z",
+      "level": "info",
+      "project": "bigdate",
+      "message": "Image optimization queue backed up - processing delayed",
+      "code": "QUEUE_BACKLOG",
+      "status_code": 200,
+      "resolved": true,
+      "resolved_at": "2026-01-31T20:12:00Z"
+    },
+    {
+      "id": "err-014",
+      "timestamp": "2026-01-31T19:30:22Z",
+      "level": "warning",
+      "project": "erp-framework",
+      "message": "Database query timeout on complex report generation",
+      "code": "QUERY_TIMEOUT",
+      "status_code": 504,
+      "resolved": true,
+      "resolved_at": "2026-01-31T19:31:05Z"
+    },
+    {
+      "id": "err-015",
+      "timestamp": "2026-01-31T18:15:11Z",
+      "level": "info",
+      "project": "wowpay",
+      "message": "New biller integration test mode activated",
+      "code": "TEST_MODE_ACTIVE",
+      "status_code": 200,
+      "resolved": false,
+      "resolved_at": null
     }
   ],
   "error_types": {
-    "GATEWAY_TIMEOUT": { "count": 45, "severity": "warning" },
-    "RATE_LIMIT_WARNING": { "count": 128, "severity": "info" },
-    "DB_POOL_EXHAUSTED": { "count": 8, "severity": "critical" },
-    "OPENAI_RATE_LIMIT": { "count": 67, "severity": "warning" },
-    "BILLER_SLOW_RESPONSE": { "count": 234, "severity": "info" },
-    "AUTH_TOKEN_EXPIRED": { "count": 312, "severity": "info" },
-    "VALIDATION_ERROR": { "count": 53, "severity": "warning" }
+    "DB_POOL_EXHAUSTED": { "count": 1, "severity": "critical" },
+    "GATEWAY_TIMEOUT": { "count": 1, "severity": "warning" },
+    "OPENAI_RATE_LIMIT": { "count": 1, "severity": "warning" },
+    "RATE_LIMIT_WARNING": { "count": 1, "severity": "info" },
+    "BILLER_SLOW_RESPONSE": { "count": 1, "severity": "warning" },
+    "PAYMENT_FAILED": { "count": 1, "severity": "critical" },
+    "HIGH_MEMORY_USAGE": { "count": 1, "severity": "warning" },
+    "MAINTENANCE_MODE": { "count": 1, "severity": "info" },
+    "CDN_CACHE_TIMEOUT": { "count": 1, "severity": "warning" },
+    "SESSION_EXPIRED": { "count": 1, "severity": "info" },
+    "OTP_DELAY": { "count": 1, "severity": "warning" },
+    "WEBHOOK_FAILED": { "count": 1, "severity": "warning" },
+    "QUEUE_BACKLOG": { "count": 1, "severity": "info" },
+    "QUERY_TIMEOUT": { "count": 1, "severity": "warning" },
+    "TEST_MODE_ACTIVE": { "count": 1, "severity": "info" }
   },
   "level_config": {
     "critical": { "color": "#ef4444", "icon": "🔴" },

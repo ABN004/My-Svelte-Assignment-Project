@@ -26,6 +26,32 @@
 	let chartsLoaded = false;
 	let showAllErrors = false;
 	
+	// Error filter state
+	let activeErrorTab = 'all';
+	
+	// Error filter tabs
+	const errorTabs = [
+		{ id: 'all', label: 'All', icon: '📋' },
+		{ id: 'critical', label: 'Critical', icon: '🔴' },
+		{ id: 'warning', label: 'Warning', icon: '🟡' },
+		{ id: 'info', label: 'Info', icon: '🔵' }
+	];
+	
+	// Filtered errors based on active tab
+	$: filteredErrors = errors.recent.filter(error => {
+		if (activeErrorTab === 'all') return true;
+		return error.level === activeErrorTab;
+	});
+	
+	// Displayed errors (respects showAllErrors toggle)
+	$: displayedErrors = showAllErrors ? filteredErrors : filteredErrors.slice(0, 5);
+	
+	// Get count for each tab
+	function getTabCount(tabId) {
+		if (tabId === 'all') return errors.recent.length;
+		return errors.recent.filter(e => e.level === tabId).length;
+	}
+	
 	// Format date helper
 	function formatDate(dateString) {
 		const date = new Date(dateString);
@@ -440,38 +466,68 @@
 							<span class="summary-item pending">{errors.summary.pending} Pending</span>
 						</div>
 					</div>
-					<div class="panel-body">
-						<div class="error-list">
-							{#each errors.recent as error}
-								<div class="error-item level-{error.level}">
-									<div class="error-level">
-										<span class="level-dot"></span>
-									</div>
-									<div class="error-content">
-										<div class="error-header">
-											<span class="error-code">{error.code}</span>
-											<span class="error-project">{error.project}</span>
-											<span class="error-time">{formatTimeAgo(error.timestamp)}</span>
-										</div>
-										<p class="error-message">{error.message}</p>
-									</div>
-									<div class="error-status">
-										{#if error.resolved}
-											<span class="status-badge resolved">Resolved</span>
-										{:else}
-											<span class="status-badge pending">Pending</span>
-										{/if}
-									</div>
-								</div>
-							{/each}
-						</div>
-						{#if errors.recent.length >= 5}
-							<button class="view-more-btn" on:click={() => showAllErrors = !showAllErrors}>
-								{showAllErrors ? 'Show Less' : 'View All Errors'}
-								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-									<polyline points="{showAllErrors ? '18 15 12 9 6 15' : '6 9 12 15 18 9'}"/>
-								</svg>
+					
+					<!-- Error Filter Tabs -->
+					<div class="error-tabs">
+						{#each errorTabs as tab}
+							<button 
+								class="error-tab"
+								class:active={activeErrorTab === tab.id}
+								on:click={() => { activeErrorTab = tab.id; showAllErrors = false; }}
+							>
+								<span class="tab-icon">{tab.icon}</span>
+								<span class="tab-label">{tab.label}</span>
+								<span class="tab-count">{getTabCount(tab.id)}</span>
 							</button>
+						{/each}
+					</div>
+					
+					<div class="panel-body">
+						{#if displayedErrors.length === 0}
+							<div class="empty-state">
+								<span class="empty-icon">✅</span>
+								<p class="empty-text">No {activeErrorTab === 'all' ? '' : activeErrorTab} errors found</p>
+							</div>
+						{:else}
+							<div class="error-list">
+								{#each displayedErrors as error}
+									<div class="error-item level-{error.level}">
+										<div class="error-level">
+											<span class="level-dot"></span>
+										</div>
+										<div class="error-content">
+											<div class="error-header">
+												<span class="error-code">{error.code}</span>
+												<span class="error-project">{error.project}</span>
+												<span class="error-time">{formatTimeAgo(error.timestamp)}</span>
+											</div>
+											<p class="error-message">{error.message}</p>
+										</div>
+										<div class="error-status">
+											{#if error.resolved}
+												<span class="status-badge resolved">Resolved</span>
+											{:else}
+												<span class="status-badge pending">Pending</span>
+											{/if}
+										</div>
+									</div>
+								{/each}
+							</div>
+							{#if filteredErrors.length > 5}
+								<button class="view-more-btn" on:click={() => showAllErrors = !showAllErrors}>
+									{#if showAllErrors}
+										Show Less
+										<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+											<polyline points="18 15 12 9 6 15"/>
+										</svg>
+									{:else}
+										View All ({filteredErrors.length - 5} more)
+										<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+											<polyline points="6 9 12 15 18 9"/>
+										</svg>
+									{/if}
+								</button>
+							{/if}
 						{/if}
 					</div>
 				</div>
@@ -782,6 +838,9 @@
 		border: 1px solid var(--color-border-primary);
 		border-radius: var(--radius-xl);
 		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		height: 580px;
 	}
 	
 	.panel-header {
@@ -836,6 +895,92 @@
 	
 	.panel-body {
 		padding: var(--space-4);
+		flex: 1;
+		overflow-y: auto;
+		min-height: 0;
+	}
+
+	/* ============================================
+	   ERROR TABS
+	   ============================================ */
+	.error-tabs {
+		display: flex;
+		gap: var(--space-1);
+		padding: var(--space-3) var(--space-4);
+		background: var(--color-bg-secondary);
+		border-bottom: 1px solid var(--color-border-primary);
+		overflow-x: auto;
+	}
+	
+	.error-tab {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		padding: var(--space-2) var(--space-4);
+		background: transparent;
+		border: 1px solid transparent;
+		border-radius: var(--radius-lg);
+		color: var(--color-text-muted);
+		font-size: var(--text-sm);
+		font-weight: 500;
+		cursor: pointer;
+		transition: all var(--transition-fast);
+		white-space: nowrap;
+	}
+	
+	.error-tab:hover {
+		background: var(--color-bg-tertiary);
+		color: var(--color-text-secondary);
+	}
+	
+	.error-tab.active {
+		background: var(--color-card-bg);
+		border-color: var(--color-border-primary);
+		color: var(--color-text-primary);
+		box-shadow: var(--shadow-sm);
+	}
+	
+	.tab-icon {
+		font-size: var(--text-sm);
+	}
+	
+	.tab-label {
+		font-weight: 600;
+	}
+	
+	.tab-count {
+		font-size: var(--text-xs);
+		font-weight: 700;
+		padding: 2px 6px;
+		background: var(--color-bg-tertiary);
+		border-radius: var(--radius-full);
+		color: var(--color-text-muted);
+	}
+	
+	.error-tab.active .tab-count {
+		background: var(--color-accent-light);
+		color: var(--color-accent);
+	}
+	
+	/* Empty State */
+	.empty-state {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: var(--space-10);
+		text-align: center;
+	}
+	
+	.empty-icon {
+		font-size: var(--text-4xl);
+		margin-bottom: var(--space-3);
+	}
+	
+	.empty-text {
+		font-size: var(--text-sm);
+		color: var(--color-text-muted);
+		margin: 0;
 	}
 
 	/* ============================================
@@ -845,6 +990,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-3);
+		margin-bottom: var(--space-4);
 	}
 	
 	.error-item {
@@ -954,8 +1100,7 @@
 		gap: var(--space-2);
 		width: 100%;
 		padding: var(--space-3);
-		margin-top: var(--space-4);
-		background: var(--color-bg-tertiary);
+		background: var(--color-card-bg);
 		border: 1px solid var(--color-border-primary);
 		border-radius: var(--radius-lg);
 		color: var(--color-text-secondary);
@@ -963,6 +1108,10 @@
 		font-weight: 500;
 		cursor: pointer;
 		transition: all var(--transition-fast);
+		position: sticky;
+		bottom: 0;
+		margin-top: auto;
+		flex-shrink: 0;
 	}
 	
 	.view-more-btn:hover {
@@ -978,6 +1127,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-4);
+		padding-bottom: var(--space-2);
 	}
 	
 	.deployment-item {
@@ -1105,8 +1255,21 @@
 			font-size: var(--text-xl);
 		}
 		
+		.panel-card {
+			height: 500px;
+		}
+		
 		.error-summary {
 			flex-wrap: wrap;
+		}
+		
+		.error-tabs {
+			padding: var(--space-2) var(--space-3);
+		}
+		
+		.error-tab {
+			padding: var(--space-2) var(--space-3);
+			font-size: var(--text-xs);
 		}
 		
 		.error-item {
@@ -1119,6 +1282,12 @@
 		
 		.error-status {
 			align-self: flex-start;
+		}
+	}
+	
+	@media (min-width: 1024px) {
+		.panel-card {
+			height: 600px;
 		}
 	}
 </style>

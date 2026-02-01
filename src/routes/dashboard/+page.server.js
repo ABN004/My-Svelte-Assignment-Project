@@ -48,10 +48,10 @@ export function load() {
 		by_project: traffic_analytics.by_project
 	};
 	
-	// CSR data: Error logs (initial 5, more loaded on interaction)
+	// CSR data: Error logs (all errors for filtering)
 	const errors_data = {
 		summary: error_logs.summary,
-		recent: error_logs.recent.slice(0, 5), // Only first 5 for initial load
+		recent: error_logs.recent, // All errors for client-side filtering
 		level_config: error_logs.level_config
 	};
 	
