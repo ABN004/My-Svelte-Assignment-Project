@@ -43,6 +43,7 @@ export function load() {
 	
 	// CSR data: Traffic analytics for charts (sent but rendered client-side)
 	const traffic_data = {
+		projects: traffic_analytics.projects,
 		monthly: traffic_analytics.monthly,
 		daily: traffic_analytics.daily,
 		by_project: traffic_analytics.by_project

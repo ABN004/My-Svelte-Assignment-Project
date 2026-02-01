@@ -1,7 +1,14 @@
 {
+  "projects": [
+    { "id": "all", "name": "All Projects" },
+    { "id": "wowpay", "name": "WowPay" },
+    { "id": "erp-framework", "name": "ERP Framework" },
+    { "id": "mbme-gateway", "name": "MBME Gateway" },
+    { "id": "bigdate", "name": "Bigdate" }
+  ],
   "monthly": {
     "period": "2025",
-    "data": [
+    "all": [
       { "month": "Jan", "api_calls": 185420, "unique_users": 12540, "bandwidth": 45.2 },
       { "month": "Feb", "api_calls": 198750, "unique_users": 13280, "bandwidth": 48.6 },
       { "month": "Mar", "api_calls": 215680, "unique_users": 14150, "bandwidth": 52.1 },
@@ -14,6 +21,62 @@
       { "month": "Oct", "api_calls": 324890, "unique_users": 21540, "bandwidth": 79.6 },
       { "month": "Nov", "api_calls": 341270, "unique_users": 22890, "bandwidth": 84.2 },
       { "month": "Dec", "api_calls": 358940, "unique_users": 24150, "bandwidth": 88.7 }
+    ],
+    "wowpay": [
+      { "month": "Jan", "api_calls": 64897, "unique_users": 4389, "bandwidth": 15.8 },
+      { "month": "Feb", "api_calls": 69563, "unique_users": 4648, "bandwidth": 17.0 },
+      { "month": "Mar", "api_calls": 75488, "unique_users": 4953, "bandwidth": 18.2 },
+      { "month": "Apr", "api_calls": 82222, "unique_users": 5369, "bandwidth": 19.9 },
+      { "month": "May", "api_calls": 86867, "unique_users": 5852, "bandwidth": 21.5 },
+      { "month": "Jun", "api_calls": 93639, "unique_users": 6262, "bandwidth": 23.1 },
+      { "month": "Jul", "api_calls": 101259, "unique_users": 6738, "bandwidth": 24.9 },
+      { "month": "Aug", "api_calls": 109368, "unique_users": 7294, "bandwidth": 26.9 },
+      { "month": "Sep", "api_calls": 104528, "unique_users": 6888, "bandwidth": 25.7 },
+      { "month": "Oct", "api_calls": 113712, "unique_users": 7539, "bandwidth": 27.9 },
+      { "month": "Nov", "api_calls": 119445, "unique_users": 8012, "bandwidth": 29.5 },
+      { "month": "Dec", "api_calls": 125629, "unique_users": 8453, "bandwidth": 31.0 }
+    ],
+    "erp-framework": [
+      { "month": "Jan", "api_calls": 51918, "unique_users": 3511, "bandwidth": 12.7 },
+      { "month": "Feb", "api_calls": 55650, "unique_users": 3718, "bandwidth": 13.6 },
+      { "month": "Mar", "api_calls": 60390, "unique_users": 3962, "bandwidth": 14.6 },
+      { "month": "Apr", "api_calls": 65778, "unique_users": 4295, "bandwidth": 15.9 },
+      { "month": "May", "api_calls": 69493, "unique_users": 4682, "bandwidth": 17.2 },
+      { "month": "Jun", "api_calls": 74911, "unique_users": 5009, "bandwidth": 18.5 },
+      { "month": "Jul", "api_calls": 81007, "unique_users": 5390, "bandwidth": 19.9 },
+      { "month": "Aug", "api_calls": 87494, "unique_users": 5835, "bandwidth": 21.5 },
+      { "month": "Sep", "api_calls": 83622, "unique_users": 5510, "bandwidth": 20.6 },
+      { "month": "Oct", "api_calls": 90969, "unique_users": 6031, "bandwidth": 22.3 },
+      { "month": "Nov", "api_calls": 95556, "unique_users": 6409, "bandwidth": 23.6 },
+      { "month": "Dec", "api_calls": 100503, "unique_users": 6762, "bandwidth": 24.8 }
+    ],
+    "mbme-gateway": [
+      { "month": "Jan", "api_calls": 40792, "unique_users": 2759, "bandwidth": 9.9 },
+      { "month": "Feb", "api_calls": 43725, "unique_users": 2922, "bandwidth": 10.7 },
+      { "month": "Mar", "api_calls": 47450, "unique_users": 3113, "bandwidth": 11.5 },
+      { "month": "Apr", "api_calls": 51682, "unique_users": 3375, "bandwidth": 12.5 },
+      { "month": "May", "api_calls": 54602, "unique_users": 3678, "bandwidth": 13.5 },
+      { "month": "Jun", "api_calls": 58859, "unique_users": 3936, "bandwidth": 14.5 },
+      { "month": "Jul", "api_calls": 63648, "unique_users": 4235, "bandwidth": 15.7 },
+      { "month": "Aug", "api_calls": 68746, "unique_users": 4585, "bandwidth": 16.9 },
+      { "month": "Sep", "api_calls": 65703, "unique_users": 4330, "bandwidth": 16.1 },
+      { "month": "Oct", "api_calls": 71476, "unique_users": 4739, "bandwidth": 17.5 },
+      { "month": "Nov", "api_calls": 75079, "unique_users": 5036, "bandwidth": 18.5 },
+      { "month": "Dec", "api_calls": 78967, "unique_users": 5313, "bandwidth": 19.5 }
+    ],
+    "bigdate": [
+      { "month": "Jan", "api_calls": 27813, "unique_users": 1881, "bandwidth": 6.8 },
+      { "month": "Feb", "api_calls": 29813, "unique_users": 1992, "bandwidth": 7.3 },
+      { "month": "Mar", "api_calls": 32352, "unique_users": 2123, "bandwidth": 7.8 },
+      { "month": "Apr", "api_calls": 35238, "unique_users": 2301, "bandwidth": 8.5 },
+      { "month": "May", "api_calls": 37229, "unique_users": 2508, "bandwidth": 9.2 },
+      { "month": "Jun", "api_calls": 40131, "unique_users": 2684, "bandwidth": 9.9 },
+      { "month": "Jul", "api_calls": 43397, "unique_users": 2888, "bandwidth": 10.7 },
+      { "month": "Aug", "api_calls": 46872, "unique_users": 3126, "bandwidth": 11.5 },
+      { "month": "Sep", "api_calls": 44798, "unique_users": 2952, "bandwidth": 11.0 },
+      { "month": "Oct", "api_calls": 48733, "unique_users": 3231, "bandwidth": 11.9 },
+      { "month": "Nov", "api_calls": 51191, "unique_users": 3434, "bandwidth": 12.6 },
+      { "month": "Dec", "api_calls": 53841, "unique_users": 3623, "bandwidth": 13.3 }
     ]
   },
   "weekly": {
@@ -27,7 +90,7 @@
   },
   "daily": {
     "period": "Last 7 days",
-    "data": [
+    "all": [
       { "day": "Mon", "api_calls": 12450, "errors": 28, "avg_response_time": 145 },
       { "day": "Tue", "api_calls": 14280, "errors": 32, "avg_response_time": 138 },
       { "day": "Wed", "api_calls": 13890, "errors": 25, "avg_response_time": 142 },
@@ -35,6 +98,42 @@
       { "day": "Fri", "api_calls": 14560, "errors": 29, "avg_response_time": 139 },
       { "day": "Sat", "api_calls": 9840, "errors": 18, "avg_response_time": 128 },
       { "day": "Sun", "api_calls": 8650, "errors": 15, "avg_response_time": 125 }
+    ],
+    "wowpay": [
+      { "day": "Mon", "api_calls": 4358, "errors": 10, "avg_response_time": 132 },
+      { "day": "Tue", "api_calls": 4998, "errors": 11, "avg_response_time": 126 },
+      { "day": "Wed", "api_calls": 4862, "errors": 9, "avg_response_time": 129 },
+      { "day": "Thu", "api_calls": 5292, "errors": 14, "avg_response_time": 138 },
+      { "day": "Fri", "api_calls": 5096, "errors": 10, "avg_response_time": 127 },
+      { "day": "Sat", "api_calls": 3444, "errors": 6, "avg_response_time": 118 },
+      { "day": "Sun", "api_calls": 3028, "errors": 5, "avg_response_time": 115 }
+    ],
+    "erp-framework": [
+      { "day": "Mon", "api_calls": 3486, "errors": 8, "avg_response_time": 158 },
+      { "day": "Tue", "api_calls": 3998, "errors": 9, "avg_response_time": 151 },
+      { "day": "Wed", "api_calls": 3889, "errors": 7, "avg_response_time": 155 },
+      { "day": "Thu", "api_calls": 4234, "errors": 12, "avg_response_time": 165 },
+      { "day": "Fri", "api_calls": 4077, "errors": 8, "avg_response_time": 152 },
+      { "day": "Sat", "api_calls": 2755, "errors": 5, "avg_response_time": 141 },
+      { "day": "Sun", "api_calls": 2422, "errors": 4, "avg_response_time": 138 }
+    ],
+    "mbme-gateway": [
+      { "day": "Mon", "api_calls": 2739, "errors": 6, "avg_response_time": 142 },
+      { "day": "Tue", "api_calls": 3142, "errors": 7, "avg_response_time": 135 },
+      { "day": "Wed", "api_calls": 3056, "errors": 5, "avg_response_time": 139 },
+      { "day": "Thu", "api_calls": 3326, "errors": 9, "avg_response_time": 148 },
+      { "day": "Fri", "api_calls": 3203, "errors": 6, "avg_response_time": 136 },
+      { "day": "Sat", "api_calls": 2165, "errors": 4, "avg_response_time": 126 },
+      { "day": "Sun", "api_calls": 1903, "errors": 3, "avg_response_time": 123 }
+    ],
+    "bigdate": [
+      { "day": "Mon", "api_calls": 1868, "errors": 4, "avg_response_time": 168 },
+      { "day": "Tue", "api_calls": 2142, "errors": 5, "avg_response_time": 159 },
+      { "day": "Wed", "api_calls": 2083, "errors": 4, "avg_response_time": 164 },
+      { "day": "Thu", "api_calls": 2268, "errors": 6, "avg_response_time": 175 },
+      { "day": "Fri", "api_calls": 2184, "errors": 5, "avg_response_time": 160 },
+      { "day": "Sat", "api_calls": 1476, "errors": 3, "avg_response_time": 148 },
+      { "day": "Sun", "api_calls": 1298, "errors": 3, "avg_response_time": 145 }
     ]
   },
   "by_project": [

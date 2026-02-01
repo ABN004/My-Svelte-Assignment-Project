@@ -26,6 +26,14 @@
 	let chartsLoaded = false;
 	let showAllErrors = false;
 	
+	// Project filter states for charts
+	let selectedTrafficProject = 'all';
+	let selectedResponseProject = 'all';
+	
+	// Get traffic data for selected project
+	$: trafficMonthlyData = traffic.monthly[selectedTrafficProject] || traffic.monthly.all;
+	$: dailyData = traffic.daily[selectedResponseProject] || traffic.daily.all;
+	
 	// Error filter state
 	let activeErrorTab = 'all';
 	
@@ -94,18 +102,15 @@
 		return 'trend-stable';
 	}
 	
-	// Initialize charts after ApexCharts loads
-	function initCharts() {
-		if (!browser || !window.ApexCharts) return;
-		
-		// Traffic Analytics Chart (Area Chart)
-		const trafficOptions = {
+	// Get chart options for traffic analytics
+	function getTrafficChartOptions(data) {
+		return {
 			series: [{
 				name: 'API Calls',
-				data: traffic.monthly.data.map(d => d.api_calls)
+				data: data.map(d => d.api_calls)
 			}, {
 				name: 'Unique Users',
-				data: traffic.monthly.data.map(d => d.unique_users)
+				data: data.map(d => d.unique_users)
 			}],
 			chart: {
 				type: 'area',
@@ -136,7 +141,7 @@
 				width: 3
 			},
 			xaxis: {
-				categories: traffic.monthly.data.map(d => d.month),
+				categories: data.map(d => d.month),
 				labels: {
 					style: {
 						colors: '#94a3b8',
@@ -180,6 +185,103 @@
 				enabled: false
 			}
 		};
+	}
+	
+	// Get chart options for response time
+	function getResponseChartOptions(data) {
+		return {
+			series: [{
+				name: 'Avg Response Time',
+				data: data.map(d => d.avg_response_time)
+			}],
+			chart: {
+				type: 'bar',
+				height: 200,
+				fontFamily: 'DM Sans, sans-serif',
+				background: 'transparent',
+				toolbar: { show: false },
+				sparkline: { enabled: false }
+			},
+			colors: ['#10b981'],
+			plotOptions: {
+				bar: {
+					borderRadius: 4,
+					columnWidth: '60%'
+				}
+			},
+			xaxis: {
+				categories: data.map(d => d.day),
+				labels: {
+					style: {
+						colors: '#94a3b8',
+						fontSize: '11px'
+					}
+				},
+				axisBorder: { show: false },
+				axisTicks: { show: false }
+			},
+			yaxis: {
+				labels: {
+					style: {
+						colors: '#94a3b8',
+						fontSize: '11px'
+					},
+					formatter: (val) => val + 'ms'
+				}
+			},
+			grid: {
+				borderColor: '#2a2a3a',
+				strokeDashArray: 4
+			},
+			dataLabels: {
+				enabled: false
+			},
+			tooltip: {
+				theme: 'dark',
+				y: {
+					formatter: (val) => val + 'ms'
+				}
+			}
+		};
+	}
+	
+	// Update traffic chart when project selection changes
+	function updateTrafficChart(projectId) {
+		selectedTrafficProject = projectId;
+		if (trafficChart && browser) {
+			const data = traffic.monthly[projectId] || traffic.monthly.all;
+			trafficChart.updateOptions({
+				series: [{
+					name: 'API Calls',
+					data: data.map(d => d.api_calls)
+				}, {
+					name: 'Unique Users',
+					data: data.map(d => d.unique_users)
+				}]
+			});
+		}
+	}
+	
+	// Update response time chart when project selection changes
+	function updateResponseChart(projectId) {
+		selectedResponseProject = projectId;
+		if (dailyChart && browser) {
+			const data = traffic.daily[projectId] || traffic.daily.all;
+			dailyChart.updateOptions({
+				series: [{
+					name: 'Avg Response Time',
+					data: data.map(d => d.avg_response_time)
+				}]
+			});
+		}
+	}
+	
+	// Initialize charts after ApexCharts loads
+	function initCharts() {
+		if (!browser || !window.ApexCharts) return;
+		
+		// Traffic Analytics Chart (Area Chart)
+		const trafficOptions = getTrafficChartOptions(trafficMonthlyData);
 		
 		if (trafficChartEl) {
 			trafficChart = new window.ApexCharts(trafficChartEl, trafficOptions);
@@ -249,60 +351,7 @@
 		}
 		
 		// Daily Response Time Chart (Bar)
-		const dailyOptions = {
-			series: [{
-				name: 'Avg Response Time',
-				data: traffic.daily.data.map(d => d.avg_response_time)
-			}],
-			chart: {
-				type: 'bar',
-				height: 200,
-				fontFamily: 'DM Sans, sans-serif',
-				background: 'transparent',
-				toolbar: { show: false },
-				sparkline: { enabled: false }
-			},
-			colors: ['#10b981'],
-			plotOptions: {
-				bar: {
-					borderRadius: 4,
-					columnWidth: '60%'
-				}
-			},
-			xaxis: {
-				categories: traffic.daily.data.map(d => d.day),
-				labels: {
-					style: {
-						colors: '#94a3b8',
-						fontSize: '11px'
-					}
-				},
-				axisBorder: { show: false },
-				axisTicks: { show: false }
-			},
-			yaxis: {
-				labels: {
-					style: {
-						colors: '#94a3b8',
-						fontSize: '11px'
-					},
-					formatter: (val) => val + 'ms'
-				}
-			},
-			grid: {
-				borderColor: '#2a2a3a',
-				strokeDashArray: 4
-			},
-			dataLabels: {
-				enabled: false
-			},
-			tooltip: {
-				theme: 'dark',
-				y: {
-					formatter: (val) => val + 'ms'
-				}
-			}
-		};
+		const dailyOptions = getResponseChartOptions(dailyData);
 		
 		if (dailyChartEl) {
 			dailyChart = new window.ApexCharts(dailyChartEl, dailyOptions);
@@ -393,8 +442,21 @@
 				<!-- Traffic Analytics Chart -->
 				<div class="chart-card chart-large">
 					<div class="chart-header">
-						<h3 class="chart-title">Traffic Analytics</h3>
-						<span class="chart-period">{traffic.monthly.period}</span>
+						<div class="chart-header-left">
+							<h3 class="chart-title">Traffic Analytics</h3>
+							<span class="chart-period">{traffic.monthly.period}</span>
+						</div>
+						<div class="chart-filter">
+							<select 
+								class="chart-select"
+								bind:value={selectedTrafficProject}
+								on:change={(e) => updateTrafficChart(e.target.value)}
+							>
+								{#each traffic.projects as project}
+									<option value={project.id}>{project.name}</option>
+								{/each}
+							</select>
+						</div>
 					</div>
 					<div class="chart-body">
 						{#if !chartsLoaded}
@@ -426,8 +488,21 @@
 				<!-- Daily Response Time -->
 				<div class="chart-card">
 					<div class="chart-header">
-						<h3 class="chart-title">Response Time</h3>
-						<span class="chart-period">{traffic.daily.period}</span>
+						<div class="chart-header-left">
+							<h3 class="chart-title">Response Time</h3>
+							<span class="chart-period">{traffic.daily.period}</span>
+						</div>
+						<div class="chart-filter">
+							<select 
+								class="chart-select chart-select-sm"
+								bind:value={selectedResponseProject}
+								on:change={(e) => updateResponseChart(e.target.value)}
+							>
+								{#each traffic.projects as project}
+									<option value={project.id}>{project.name}</option>
+								{/each}
+							</select>
+						</div>
 					</div>
 					<div class="chart-body">
 						{#if !chartsLoaded}
@@ -765,6 +840,14 @@
 		align-items: center;
 		padding: var(--space-5);
 		border-bottom: 1px solid var(--color-border-primary);
+		flex-wrap: wrap;
+		gap: var(--space-3);
+	}
+	
+	.chart-header-left {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
 	}
 	
 	.chart-title {
@@ -776,6 +859,47 @@
 	.chart-period {
 		font-size: var(--text-sm);
 		color: var(--color-text-muted);
+	}
+	
+	.chart-filter {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+	}
+	
+	.chart-select {
+		appearance: none;
+		background: var(--color-bg-secondary);
+		border: 1px solid var(--color-border-primary);
+		border-radius: var(--radius-lg);
+		padding: var(--space-2) var(--space-10) var(--space-2) var(--space-4);
+		font-size: var(--text-sm);
+		font-weight: 500;
+		color: var(--color-text-primary);
+		cursor: pointer;
+		transition: all var(--transition-fast);
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 12px center;
+		min-width: 160px;
+	}
+	
+	.chart-select:hover {
+		border-color: var(--color-accent);
+		background-color: var(--color-bg-tertiary);
+	}
+	
+	.chart-select:focus {
+		outline: none;
+		border-color: var(--color-accent);
+		box-shadow: 0 0 0 3px var(--color-accent-light);
+	}
+	
+	.chart-select-sm {
+		min-width: 130px;
+		padding: var(--space-2) var(--space-8) var(--space-2) var(--space-3);
+		font-size: var(--text-xs);
+		background-position: right 8px center;
 	}
 	
 	.chart-body {
