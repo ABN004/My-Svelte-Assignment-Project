@@ -2,19 +2,26 @@
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 	
-	// Redirect to profile page on mount
+	/** @type {import('./$types').PageData} */
+	export let data;
+	
+	$: site_config = data.site_config;
+	$: home_config = site_config?.pages?.home || {};
+	
+	// Redirect to default route on mount
 	onMount(() => {
-		goto('/profile');
+		const redirectTo = home_config.redirect_to || site_config?.navigation?.default_route || '/profile';
+		goto(redirectTo);
 	});
 </script>
 
 <svelte:head>
-	<title>Amal B Nair | Developer Portfolio</title>
+	<title>{home_config.title || site_config?.site?.title || 'Loading...'}</title>
 </svelte:head>
 
 <div class="loading-container">
 	<div class="loading-spinner"></div>
-	<p class="loading-text">Loading Portfolio...</p>
+	<p class="loading-text">{home_config.loading_text || 'Loading...'}</p>
 </div>
 
 <style>

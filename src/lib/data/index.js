@@ -8,7 +8,11 @@
  * Usage:
  *   import { profile, tech_stack, projects } from '$lib/data';
  *   import { dashboard_metrics, deployments } from '$lib/data';
+ *   import { site_config } from '$lib/data';
  */
+
+// Site Configuration
+export { default as site_config } from './site_config.json';
 
 // Profile & Personal Data
 export { default as profile } from './profile.json';

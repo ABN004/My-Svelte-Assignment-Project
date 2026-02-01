@@ -3,6 +3,11 @@
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	
+	/** @type {import('./$types').LayoutData} */
+	export let data;
+	
+	$: site_config = data.site_config;
+	
 	let theme = 'dark';
 	let mounted = false;
 	
@@ -23,21 +28,24 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href="/icons/AmalBNair.ico" />
-	<title>Amal B Nair | Fullstack Developer</title>
+	<link rel="icon" href={site_config.branding.favicon} />
+	<title>{site_config.site.title}</title>
+	<meta name="description" content={site_config.site.description} />
+	<meta name="author" content={site_config.site.author} />
 </svelte:head>
 
 <!-- Navigation Header -->
 <header class="nav-header">
 	<div class="nav-container">
 		<a href="/" class="nav-logo">
-			<span class="logo-text">ABN</span>
+			<span class="logo-text">{site_config.branding.logo_text}</span>
 			<span class="logo-dot"></span>
 		</a>
 		
 		<nav class="nav-links">
-			<a href="/profile" class="nav-link">Profile</a>
-			<a href="/dashboard" class="nav-link">Dashboard</a>
+			{#each site_config.navigation.links as link}
+				<a href={link.href} class="nav-link">{link.label}</a>
+			{/each}
 		</nav>
 		
 		<div class="nav-actions">
