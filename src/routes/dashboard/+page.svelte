@@ -102,6 +102,23 @@
 		return 'trend-stable';
 	}
 	
+	// Get current theme
+	function getCurrentTheme() {
+		if (!browser) return 'dark';
+		return document.documentElement.getAttribute('data-theme') || 'dark';
+	}
+	
+	// Get theme-aware chart colors
+	function getChartColors() {
+		const isDark = getCurrentTheme() === 'dark';
+		return {
+			text: isDark ? '#f8fafc' : '#1e293b',
+			textSecondary: isDark ? '#94a3b8' : '#64748b',
+			grid: isDark ? '#2a2a3a' : '#e2e8f0',
+			tooltipTheme: isDark ? 'dark' : 'light'
+		};
+	}
+	
 	// Get chart options for traffic analytics
 	function getTrafficChartOptions(data) {
 		return {
@@ -289,6 +306,7 @@
 		}
 		
 		// Projects Distribution Chart (Donut)
+		const chartColors = getChartColors();
 		const projectsOptions = {
 			series: traffic.by_project.map(p => p.percentage),
 			chart: {
@@ -305,7 +323,7 @@
 			legend: {
 				position: 'bottom',
 				labels: {
-					colors: '#94a3b8'
+					colors: chartColors.textSecondary
 				}
 			},
 			plotOptions: {
@@ -317,20 +335,20 @@
 							name: {
 								show: true,
 								fontSize: '14px',
-								color: '#94a3b8'
+								color: chartColors.textSecondary
 							},
 							value: {
 								show: true,
 								fontSize: '24px',
 								fontWeight: 700,
-								color: '#f8fafc',
+								color: chartColors.text,
 								formatter: (val) => val + '%'
 							},
 							total: {
 								show: true,
 								label: 'Total Traffic',
 								fontSize: '12px',
-								color: '#94a3b8',
+								color: chartColors.textSecondary,
 								formatter: () => '100%'
 							}
 						}
@@ -341,7 +359,7 @@
 				enabled: false
 			},
 			tooltip: {
-				theme: 'dark'
+				theme: chartColors.tooltipTheme
 			}
 		};
 		
@@ -361,22 +379,63 @@
 		chartsLoaded = true;
 	}
 	
+	// Update donut chart colors based on theme
+	function updateDonutChartColors() {
+		if (!projectsChart) return;
+		const chartColors = getChartColors();
+		projectsChart.updateOptions({
+			legend: {
+				labels: {
+					colors: chartColors.textSecondary
+				}
+			},
+			plotOptions: {
+				pie: {
+					donut: {
+						labels: {
+							name: {
+								color: chartColors.textSecondary
+							},
+							value: {
+								color: chartColors.text
+							},
+							total: {
+								color: chartColors.textSecondary
+							}
+						}
+					}
+				}
+			},
+			tooltip: {
+				theme: chartColors.tooltipTheme
+			}
+		});
+	}
+
 	onMount(() => {
-		// Load ApexCharts script
-		// const script = document.createElement('script');
-		// script.src = '/lib/apexcharts/apexcharts.min.js';
-		// script.onload = () => {
-			// Small delay to ensure DOM is ready
-			setTimeout(initCharts, 100);
-		// };
-		// document.head.appendChild(script);
-		//
-		// return () => {
-		// 	// Cleanup charts on unmount
-		// 	if (trafficChart) trafficChart.destroy();
-		// 	if (projectsChart) projectsChart.destroy();
-		// 	if (dailyChart) dailyChart.destroy();
-		// };
+		// Small delay to ensure DOM is ready
+		setTimeout(initCharts, 100);
+		
+		// Listen for theme changes
+		const observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				if (mutation.attributeName === 'data-theme') {
+					updateDonutChartColors();
+				}
+			});
+		});
+		
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ['data-theme']
+		});
+		
+		return () => {
+			observer.disconnect();
+			if (trafficChart) trafficChart.destroy();
+			if (projectsChart) projectsChart.destroy();
+			if (dailyChart) dailyChart.destroy();
+		};
 	});
 </script>
 
