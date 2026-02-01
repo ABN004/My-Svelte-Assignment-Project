@@ -1,0 +1,46 @@
+{
+  "monthly": {
+    "period": "2025",
+    "data": [
+      { "month": "Jan", "api_calls": 185420, "unique_users": 12540, "bandwidth": 45.2 },
+      { "month": "Feb", "api_calls": 198750, "unique_users": 13280, "bandwidth": 48.6 },
+      { "month": "Mar", "api_calls": 215680, "unique_users": 14150, "bandwidth": 52.1 },
+      { "month": "Apr", "api_calls": 234920, "unique_users": 15340, "bandwidth": 56.8 },
+      { "month": "May", "api_calls": 248190, "unique_users": 16720, "bandwidth": 61.3 },
+      { "month": "Jun", "api_calls": 267540, "unique_users": 17890, "bandwidth": 65.9 },
+      { "month": "Jul", "api_calls": 289310, "unique_users": 19250, "bandwidth": 71.2 },
+      { "month": "Aug", "api_calls": 312480, "unique_users": 20840, "bandwidth": 76.8 },
+      { "month": "Sep", "api_calls": 298650, "unique_users": 19680, "bandwidth": 73.4 },
+      { "month": "Oct", "api_calls": 324890, "unique_users": 21540, "bandwidth": 79.6 },
+      { "month": "Nov", "api_calls": 341270, "unique_users": 22890, "bandwidth": 84.2 },
+      { "month": "Dec", "api_calls": 358940, "unique_users": 24150, "bandwidth": 88.7 }
+    ]
+  },
+  "weekly": {
+    "period": "Last 4 weeks",
+    "data": [
+      { "week": "Week 1", "api_calls": 68420, "unique_users": 5840, "peak_hour": 14 },
+      { "week": "Week 2", "api_calls": 72150, "unique_users": 6120, "peak_hour": 15 },
+      { "week": "Week 3", "api_calls": 75890, "unique_users": 6450, "peak_hour": 14 },
+      { "week": "Week 4", "api_calls": 71340, "unique_users": 6080, "peak_hour": 16 }
+    ]
+  },
+  "daily": {
+    "period": "Last 7 days",
+    "data": [
+      { "day": "Mon", "api_calls": 12450, "errors": 28, "avg_response_time": 145 },
+      { "day": "Tue", "api_calls": 14280, "errors": 32, "avg_response_time": 138 },
+      { "day": "Wed", "api_calls": 13890, "errors": 25, "avg_response_time": 142 },
+      { "day": "Thu", "api_calls": 15120, "errors": 41, "avg_response_time": 151 },
+      { "day": "Fri", "api_calls": 14560, "errors": 29, "avg_response_time": 139 },
+      { "day": "Sat", "api_calls": 9840, "errors": 18, "avg_response_time": 128 },
+      { "day": "Sun", "api_calls": 8650, "errors": 15, "avg_response_time": 125 }
+    ]
+  },
+  "by_project": [
+    { "project_id": "erp-framework", "percentage": 28, "calls": 797325 },
+    { "project_id": "wowpay", "percentage": 35, "calls": 996658 },
+    { "project_id": "mbme-gateway", "percentage": 22, "calls": 626471 },
+    { "project_id": "bigdate", "percentage": 15, "calls": 427139 }
+  ]
+}
