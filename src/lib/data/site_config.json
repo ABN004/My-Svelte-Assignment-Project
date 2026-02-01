@@ -1,0 +1,43 @@
+{
+  "site": {
+    "name": "ABN Portfolio",
+    "title": "Amal B Nair | Fullstack Developer",
+    "description": "Senior Fullstack Web Developer specializing in SvelteKit, Node.js, and AI-powered applications",
+    "author": "Amal B Nair",
+    "keywords": ["fullstack developer", "sveltekit", "node.js", "web developer", "kerala", "india"]
+  },
+  "branding": {
+    "logo_text": "ABN",
+    "logo_short": "ABN",
+    "favicon": "/icons/AmalBNair.ico",
+    "theme_color": "#0a0a0f",
+    "accent_color": "#f97316"
+  },
+  "navigation": {
+    "links": [
+      { "label": "Profile", "href": "/profile", "icon": "user" },
+      { "label": "Dashboard", "href": "/dashboard", "icon": "chart" }
+    ],
+    "default_route": "/profile"
+  },
+  "pages": {
+    "home": {
+      "title": "Amal B Nair | Developer Portfolio",
+      "redirect_to": "/profile",
+      "loading_text": "Loading Portfolio..."
+    },
+    "profile": {
+      "title_suffix": "Profile",
+      "meta_description": "Professional profile of Amal B Nair - Senior Fullstack Web Developer"
+    },
+    "dashboard": {
+      "title": "Dashboard | Amal B Nair",
+      "meta_description": "Developer analytics dashboard - Monitor project performance, API usage, and system health"
+    }
+  },
+  "social": {
+    "github": "https://github.com/ABN004",
+    "linkedin": "https://linkedin.com/in/amal-b-nair-6171a7178"
+  }
+}
+
