@@ -1,8 +1,11 @@
 <script>
 	/** @type {import('./$types').PageData} */
-	let { data } = $props();
+	export let data;
 	
-	const { profile, tech_stack, projects, contributions } = data;
+	$: profile = data.profile;
+	$: tech_stack = data.tech_stack;
+	$: projects = data.projects;
+	$: contributions = data.contributions;
 	
 	// Helper function to get status badge color
 	function getStatusColor(status) {
@@ -956,4 +959,3 @@
 		}
 	}
 </style>
-
