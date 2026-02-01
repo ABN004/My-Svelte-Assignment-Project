@@ -1,0 +1,70 @@
+{
+  "overview": {
+    "total_projects": {
+      "value": 4,
+      "label": "Total Projects",
+      "icon": "📦",
+      "trend": {
+        "value": 1,
+        "direction": "up",
+        "period": "this year"
+      }
+    },
+    "total_api_calls": {
+      "value": 2847593,
+      "label": "API Calls (30d)",
+      "icon": "📡",
+      "formatted": "2.85M",
+      "trend": {
+        "value": 12.5,
+        "direction": "up",
+        "period": "vs last month"
+      }
+    },
+    "active_deployments": {
+      "value": 4,
+      "label": "Active Deployments",
+      "icon": "🚀",
+      "trend": {
+        "value": 0,
+        "direction": "stable",
+        "period": "no change"
+      }
+    },
+    "error_rate": {
+      "value": 0.3,
+      "label": "Error Rate",
+      "icon": "⚠️",
+      "formatted": "0.3%",
+      "trend": {
+        "value": 0.1,
+        "direction": "down",
+        "period": "vs last month"
+      }
+    },
+    "uptime": {
+      "value": 99.7,
+      "label": "Uptime",
+      "icon": "✅",
+      "formatted": "99.7%",
+      "trend": {
+        "value": 0.2,
+        "direction": "up",
+        "period": "vs last month"
+      }
+    },
+    "users_served": {
+      "value": 25847,
+      "label": "Users Served",
+      "icon": "👥",
+      "formatted": "25.8K",
+      "trend": {
+        "value": 8.3,
+        "direction": "up",
+        "period": "vs last month"
+      }
+    }
+  },
+  "last_updated": "2026-02-01T10:30:00Z",
+  "refresh_interval": 300000
+}

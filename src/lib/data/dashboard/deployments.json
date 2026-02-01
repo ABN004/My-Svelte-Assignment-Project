@@ -1,0 +1,97 @@
+{
+  "deployments": [
+    {
+      "id": "deploy-001",
+      "project_id": "erp-framework",
+      "project_name": "Enterprise ERP Framework",
+      "environment": "production",
+      "status": "healthy",
+      "version": "2.4.1",
+      "last_deployed": "2026-01-28T14:30:00Z",
+      "last_deployed_by": "Amal B Nair",
+      "uptime": 99.8,
+      "region": "ap-south-1",
+      "instances": 2,
+      "cpu": 34,
+      "memory": 62,
+      "metrics": {
+        "requests_per_second": 45,
+        "avg_response_time": 142,
+        "active_connections": 128
+      }
+    },
+    {
+      "id": "deploy-002",
+      "project_id": "wowpay",
+      "project_name": "WowPay Payment Platform",
+      "environment": "production",
+      "status": "healthy",
+      "version": "1.8.3",
+      "last_deployed": "2026-01-30T09:15:00Z",
+      "last_deployed_by": "Amal B Nair",
+      "uptime": 99.7,
+      "region": "me-south-1",
+      "instances": 3,
+      "cpu": 48,
+      "memory": 71,
+      "metrics": {
+        "requests_per_second": 82,
+        "avg_response_time": 98,
+        "active_connections": 256
+      }
+    },
+    {
+      "id": "deploy-003",
+      "project_id": "mbme-gateway",
+      "project_name": "MBME Payment Gateway",
+      "environment": "production",
+      "status": "warning",
+      "status_message": "High memory usage detected",
+      "version": "3.1.0",
+      "last_deployed": "2026-01-25T11:45:00Z",
+      "last_deployed_by": "Amal B Nair",
+      "uptime": 99.5,
+      "region": "me-south-1",
+      "instances": 2,
+      "cpu": 56,
+      "memory": 87,
+      "metrics": {
+        "requests_per_second": 67,
+        "avg_response_time": 156,
+        "active_connections": 198
+      }
+    },
+    {
+      "id": "deploy-004",
+      "project_id": "bigdate",
+      "project_name": "Bigdate Event Builder",
+      "environment": "production",
+      "status": "healthy",
+      "version": "4.2.0",
+      "last_deployed": "2026-01-29T16:20:00Z",
+      "last_deployed_by": "Amal B Nair",
+      "uptime": 99.9,
+      "region": "ap-south-1",
+      "instances": 4,
+      "cpu": 28,
+      "memory": 54,
+      "metrics": {
+        "requests_per_second": 124,
+        "avg_response_time": 89,
+        "active_connections": 412
+      }
+    }
+  ],
+  "status_config": {
+    "healthy": { "label": "Healthy", "color": "#10b981", "icon": "✅" },
+    "warning": { "label": "Warning", "color": "#f59e0b", "icon": "⚠️" },
+    "critical": { "label": "Critical", "color": "#ef4444", "icon": "🔴" },
+    "deploying": { "label": "Deploying", "color": "#3b82f6", "icon": "🔄" },
+    "stopped": { "label": "Stopped", "color": "#6b7280", "icon": "⏹️" }
+  },
+  "environments": ["production", "staging", "development"],
+  "regions": {
+    "ap-south-1": "Mumbai, India",
+    "me-south-1": "Bahrain, UAE"
+  }
+}

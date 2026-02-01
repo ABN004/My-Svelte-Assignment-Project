@@ -1,0 +1,106 @@
+{
+  "featured": [
+    {
+      "id": "erp-framework",
+      "name": "Enterprise ERP Framework",
+      "short_name": "ERP Platform",
+      "description": "Low-code Enterprise Resource Planning platform that dynamically generates complete web applications from JSON configurations.",
+      "long_description": "Designed and developed a comprehensive low-code ERP platform enabling rapid business application deployment without extensive coding. Features AI-powered SQL generation, 20+ dashboard components, and dynamic form builders.",
+      "status": "live",
+      "type": "Enterprise",
+      "start_date": "2023-02",
+      "tech_stack": ["SvelteKit", "Node.js", "MSSQL Server", "OpenAI API", "Socket.io"],
+      "highlights": [
+        "AI-powered assistant for SQL query generation",
+        "20+ reusable dashboard components",
+        "2,500+ CSS rules theming system",
+        "Dynamic form builder with 15+ field types"
+      ],
+      "metrics": {
+        "dev_time_reduction": "70%",
+        "css_rules": 2500,
+        "dashboard_components": 20,
+        "field_types": 15
+      },
+      "color": "#6366f1"
+    },
+    {
+      "id": "wowpay",
+      "name": "WowPay Payment Platform",
+      "short_name": "WowPay",
+      "description": "Multi-biller payment aggregation platform for UAE enabling bill payments and mobile recharges across 20+ service providers.",
+      "long_description": "Comprehensive bill payment platform enabling UAE residents to pay utility bills (DEWA, AADC, Etisalat, Du, Salik, Nol) through a unified web interface with real-time order tracking.",
+      "status": "live",
+      "type": "FinTech",
+      "start_date": "2024-01",
+      "tech_stack": ["SvelteKit", "Express.js", "PostgreSQL", "MongoDB", "Redis"],
+      "highlights": [
+        "20+ integrated service providers",
+        "Multi-database architecture",
+        "Real-time order tracking system",
+        "99.7% uptime for payment processing"
+      ],
+      "metrics": {
+        "biller_integrations": 20,
+        "uptime": "99.7%",
+        "daily_transactions": "1000+",
+        "payment_methods": 3
+      },
+      "color": "#10b981"
+    },
+    {
+      "id": "mbme-gateway",
+      "name": "MBME Payment Gateway",
+      "short_name": "MBME Gateway",
+      "description": "Merchant portal and back-office management system for payment gateway with real-time transaction monitoring.",
+      "long_description": "Comprehensive merchant portal enabling merchants to onboard, manage payment accounts, monitor transactions in real-time, generate reports, and configure payment gateway settings.",
+      "status": "live",
+      "type": "FinTech",
+      "start_date": "2024-03",
+      "tech_stack": ["SvelteKit", "Express.js", "PostgreSQL", "Redis", "Chart.js"],
+      "highlights": [
+        "Real-time transaction monitoring",
+        "Multi-factor authentication (2FA)",
+        "Settlement reconciliation module",
+        "Webhook management with HMAC-SHA256"
+      ],
+      "metrics": {
+        "security_layers": 4,
+        "report_formats": 3,
+        "webhook_signing": "HMAC-SHA256",
+        "session_management": "Redis"
+      },
+      "color": "#f59e0b"
+    },
+    {
+      "id": "bigdate",
+      "name": "Bigdate Event Builder",
+      "short_name": "Bigdate",
+      "description": "AI-powered no-code event website builder platform with GPT chatbot enabling website creation through conversation.",
+      "long_description": "No-code platform with AI chatbot enabling users to create event websites through natural conversation. Features 3 microservices architecture, visual editor, and real-time collaboration.",
+      "status": "live",
+      "type": "SaaS",
+      "start_date": "2023-06",
+      "tech_stack": ["SvelteKit", "Node.js", "MongoDB", "Redis", "OpenAI API"],
+      "highlights": [
+        "AI-powered chatbot for 10+ event types",
+        "3 microservices architecture",
+        "500+ template components",
+        "Real-time editing via Socket.io"
+      ],
+      "metrics": {
+        "users": "25,000+",
+        "websites_hosted": "50,000+",
+        "template_components": 500,
+        "query_reduction": "70%",
+        "creation_time_reduction": "2hrs → 5min"
+      },
+      "color": "#ec4899"
+    }
+  ],
+  "status_types": {
+    "live": { "label": "Live", "color": "#10b981" },
+    "development": { "label": "In Development", "color": "#f59e0b" },
+    "maintenance": { "label": "Maintenance", "color": "#6b7280" }
+  }
+}

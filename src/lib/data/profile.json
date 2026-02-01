@@ -1,0 +1,45 @@
+{
+  "id": "abn-001",
+  "personal": {
+    "first_name": "Amal",
+    "last_name": "B Nair",
+    "full_name": "Amal B Nair",
+    "avatar": "/icons/abn-512.png",
+    "location": {
+      "city": "Ernakulam",
+      "state": "Kerala",
+      "country": "India"
+    },
+    "contact": {
+      "email": "amal004nair@gmail.com",
+      "phone": "+91 8129211065"
+    }
+  },
+  "professional": {
+    "title": "Senior Fullstack Web Developer",
+    "tagline": "Building scalable enterprise solutions with SvelteKit, Node.js & AI",
+    "bio": "3+ years architecting enterprise-grade applications, payment gateway systems, and AI-powered platforms. Expert in building scalable microservices using SvelteKit, Node.js, and multi-database architectures.",
+    "years_of_experience": 3,
+    "current_company": "Binary Technologies",
+    "current_role": "Full-Stack Developer",
+    "availability": "Open to opportunities"
+  },
+  "social": {
+    "github": {
+      "url": "https://github.com/ABN004",
+      "username": "ABN004"
+    },
+    "linkedin": {
+      "url": "https://linkedin.com/in/amal-b-nair-6171a7178",
+      "username": "amal-b-nair-6171a7178"
+    }
+  },
+  "education": {
+    "degree": "BTech",
+    "field": "Bachelor of Technology",
+    "university": "APJ Abdul Kalam Technological University",
+    "college": "College of Engineering, Kidangoor",
+    "start_year": 2015,
+    "end_year": 2019
+  }
+}

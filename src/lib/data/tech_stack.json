@@ -1,0 +1,81 @@
+{
+  "categories": [
+    {
+      "id": "frontend",
+      "name": "Frontend",
+      "icon": "🎨",
+      "skills": [
+        { "name": "SvelteKit", "proficiency": 95, "years_used": 3, "is_primary": true },
+        { "name": "Svelte", "proficiency": 95, "years_used": 3, "is_primary": true },
+        { "name": "JavaScript", "proficiency": 90, "years_used": 3, "is_primary": true },
+        { "name": "TypeScript", "proficiency": 75, "years_used": 1, "is_primary": false },
+        { "name": "Tailwind CSS", "proficiency": 90, "years_used": 2, "is_primary": true },
+        { "name": "Sass/SCSS", "proficiency": 85, "years_used": 2, "is_primary": false },
+        { "name": "HTML5/CSS3", "proficiency": 95, "years_used": 3, "is_primary": false }
+      ]
+    },
+    {
+      "id": "backend",
+      "name": "Backend",
+      "icon": "⚙️",
+      "skills": [
+        { "name": "Node.js", "proficiency": 90, "years_used": 3, "is_primary": true },
+        { "name": "Express.js", "proficiency": 90, "years_used": 3, "is_primary": true },
+        { "name": "RESTful APIs", "proficiency": 90, "years_used": 3, "is_primary": true },
+        { "name": "Socket.io", "proficiency": 80, "years_used": 2, "is_primary": false },
+        { "name": "WebSocket", "proficiency": 80, "years_used": 2, "is_primary": false }
+      ]
+    },
+    {
+      "id": "database",
+      "name": "Databases",
+      "icon": "🗄️",
+      "skills": [
+        { "name": "PostgreSQL", "proficiency": 85, "years_used": 2, "is_primary": true },
+        { "name": "MongoDB", "proficiency": 85, "years_used": 2, "is_primary": true },
+        { "name": "MSSQL Server", "proficiency": 80, "years_used": 2, "is_primary": false },
+        { "name": "Redis", "proficiency": 85, "years_used": 2, "is_primary": true }
+      ]
+    },
+    {
+      "id": "ai",
+      "name": "AI & ML",
+      "icon": "🤖",
+      "skills": [
+        { "name": "OpenAI API", "proficiency": 85, "years_used": 2, "is_primary": true },
+        { "name": "GPT-4/GPT-5", "proficiency": 85, "years_used": 2, "is_primary": true },
+        { "name": "Prompt Engineering", "proficiency": 80, "years_used": 2, "is_primary": false }
+      ]
+    },
+    {
+      "id": "security",
+      "name": "Security",
+      "icon": "🔐",
+      "skills": [
+        { "name": "JWT", "proficiency": 90, "years_used": 3, "is_primary": true },
+        { "name": "Passport.js", "proficiency": 85, "years_used": 2, "is_primary": false },
+        { "name": "2FA (Speakeasy)", "proficiency": 80, "years_used": 1, "is_primary": false },
+        { "name": "OAuth 2.0", "proficiency": 80, "years_used": 2, "is_primary": false },
+        { "name": "Helmet.js", "proficiency": 85, "years_used": 2, "is_primary": false }
+      ]
+    },
+    {
+      "id": "devops",
+      "name": "DevOps & Tools",
+      "icon": "🚀",
+      "skills": [
+        { "name": "PM2", "proficiency": 85, "years_used": 2, "is_primary": true },
+        { "name": "Azure Blob Storage", "proficiency": 75, "years_used": 1, "is_primary": false },
+        { "name": "Git/GitHub", "proficiency": 90, "years_used": 3, "is_primary": true },
+        { "name": "Docker", "proficiency": 60, "years_used": 1, "is_primary": false }
+      ]
+    }
+  ],
+  "highlights": [
+    "SvelteKit Specialist",
+    "Payment Systems Expert",
+    "AI Integration",
+    "Real-time Applications"
+  ]
+}
+
